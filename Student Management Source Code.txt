@@ -1,0 +1,72 @@
+
+
+
+
+             Save Code
+
+
+             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=StudentDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("insert into Student values(@studentid,@studentname,@phone,@email)", con);
+            cnn.Parameters.AddWithValue("@StudentId", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@StudentName", textBox2.Text);
+            cnn.Parameters.AddWithValue("@Phone", textBox3.Text);
+            cnn.Parameters.AddWithValue("@Email", textBox4.Text);
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Saved Successfully");
+
+
+
+
+           Add Code
+
+
+           SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=StudentDB;Integrated Security=True");
+            SqlCommand cnn = new SqlCommand("select * from Student", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+
+
+          Delete Code
+
+
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=StudentDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cnn = new SqlCommand("delete Student where studentid=@studentid", con);
+            cnn.Parameters.AddWithValue("@StudentId", int.Parse(textBox1.Text));
+            
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Deleted Successfully");
+
+
+
+
+          Student_Load Code
+
+
+
+         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=StudentDB;Integrated Security=True");
+            SqlCommand cnn = new SqlCommand("select * from Student", con);
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+
+
+
+        
+
+
+
+
+
+          
